@@ -41,8 +41,9 @@ def add_block(block):
 	else:
 		block["timestamp"] = get_time()
 		last_block = block_chain[-1]
+		
 		#validação dos blocos anteriores
-    	#validação de ORIGEM e DESTINO
+    		#validação de ORIGEM e DESTINO
 		while block["origem"] != last_block["destino"]:
 			origem = input("Origem errada! Por favor, digite novamente: ")
 			if origem == last_block["destino"]:
@@ -67,7 +68,7 @@ while 1:
 	print("\n########################################")
 	resp = input("Deseja adicionar alguma informação?(S/N) ")
 	if resp == 's' or resp == 'S':
-		data = {}	#bloco contendo informação
+		data = {}	#bloco vazio, p/ colocar informações
 		
 		origem = input("Origem do Produto: ")
 		destino = input("Destino do Produto: ")
