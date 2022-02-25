@@ -61,37 +61,38 @@ def add_block(block):
 	#Após todas as validações serem feitas, adicionar bloco na Blockchain
 	block_chain.append(block)	
 
+if __name__ == '__main__':
+	
+	#Esperando um Evento
+	# Evento --> informação de adicionar ou não o bloco na Blockchain
+	while 1:
+		print("\n########################################")
+		resp = input("Deseja adicionar alguma informação?(S/N) ")
+		if resp == 's' or resp == 'S':
+			data = {}	#bloco vazio, p/ colocar informações
+			
+			origem = input("Origem do Produto: ")
+			destino = input("Destino do Produto: ")
+			codigo = input("Codigo do Produto: ")
+			empresa = input("Empresa responsável: ")
 
-#Esperando um Evento
-# Evento --> informação de adicionar ou não o bloco na Blockchain
-while 1:
-	print("\n########################################")
-	resp = input("Deseja adicionar alguma informação?(S/N) ")
-	if resp == 's' or resp == 'S':
-		data = {}	#bloco vazio, p/ colocar informações
-		
-		origem = input("Origem do Produto: ")
-		destino = input("Destino do Produto: ")
-		codigo = input("Codigo do Produto: ")
-		empresa = input("Empresa responsável: ")
+			data['origem'] = origem
+			data['destino'] = destino
+			data['codigo'] = codigo
+			data['empresa'] = empresa
 
-		data['origem'] = origem
-		data['destino'] = destino
-		data['codigo'] = codigo
-		data['empresa'] = empresa
+			json_data = json.dumps(data)
+			add_block(data)
+			print("=== Cadastro realizado com sucesso! ===")
 
-		json_data = json.dumps(data)
-		add_block(data)
-		print("=== Cadastro realizado com sucesso! ===")
-
-	else:
-		break
+		else:
+			break
 
 
 
-###################################
-print('\n###################################')
-print("Blockchain criada: ")
-print(block_chain)
+	###################################
+	print('\n###################################')
+	print("Blockchain criada: ")
+	print(block_chain)
 
-print("Nº de Blocos na Blockchain: ", len(block_chain))
+	print("Nº de Blocos na Blockchain: ", len(block_chain))
